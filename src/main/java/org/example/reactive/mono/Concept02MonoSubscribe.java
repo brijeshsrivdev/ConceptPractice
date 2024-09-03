@@ -1,4 +1,4 @@
-package org.example.reactive;
+package org.example.reactive.mono;
 
 import reactor.core.publisher.Mono;
 

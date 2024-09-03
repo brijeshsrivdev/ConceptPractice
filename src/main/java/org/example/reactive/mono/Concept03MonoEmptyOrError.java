@@ -1,4 +1,4 @@
-package org.example.reactive;
+package org.example.reactive.mono;
 
 import com.github.javafaker.Faker;
 import reactor.core.publisher.Mono;

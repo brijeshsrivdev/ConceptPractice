@@ -1,4 +1,4 @@
-package org.example.reactive;
+package org.example.reactive.mono;
 
 import reactor.core.publisher.Mono;
 
@@ -31,6 +31,7 @@ public class Concept04MonoFromSupplier {
     }
     private static String getName(){
         System.out.println("Generating name..");
+        System.out.println(Thread.currentThread().getName());
         return faker().name().fullName();
     }
 }

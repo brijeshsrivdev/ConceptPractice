@@ -1,5 +1,6 @@
-package org.example.reactive;
+package org.example.reactive.mono;
 
+import org.example.reactive.ReactiveUtils;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -15,15 +16,15 @@ public class MonoDemoWithFile {
         write("file3.txt", "This is file3")
                 .subscribe(ReactiveUtils.onNext(), ReactiveUtils.onError(), ReactiveUtils.onComplete());
 
-//        read("file03.txt")
-//                .subscribe(ReactiveUtils.onNext(), ReactiveUtils.onError(), ReactiveUtils.onComplete());
+        read("file3.txt")
+                .subscribeOn(Schedulers.boundedElastic())
+                .subscribe(ReactiveUtils.onNext(), ReactiveUtils.onError(), ReactiveUtils.onComplete());
 
-//        delete("file03.txt")
-//                .subscribe(ReactiveUtils.onNext(), ReactiveUtils.onError(), ReactiveUtils.onComplete());
+        delete("file3.txt")
+                .subscribe(ReactiveUtils.onNext(), ReactiveUtils.onError(), ReactiveUtils.onComplete());
     }
 
     private static final Path PATH = Paths.get("src/main/resources/demo");
-
 
 
     public static Mono<Void> write(String fileName, String content) {
@@ -32,7 +33,7 @@ public class MonoDemoWithFile {
 
     private static void writeFile(String fileName, String content) {
         try {
-            System.out.println("File processing thread :: "+ Thread.currentThread().getName());
+            System.out.println("File processing thread :: " + Thread.currentThread().getName());
             Files.writeString(PATH.resolve(fileName),
                     content,
                     StandardOpenOption.CREATE,
@@ -48,7 +49,10 @@ public class MonoDemoWithFile {
 
     private static String readFile(String fileName) {
         try {
-            return Files.readString(PATH.resolve(fileName));
+            System.out.println(Thread.currentThread().getName());
+            var res = Files.readString(PATH.resolve(fileName));
+            System.out.println(res);
+            return res;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

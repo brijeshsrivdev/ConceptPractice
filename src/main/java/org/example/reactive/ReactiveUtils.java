@@ -4,7 +4,7 @@ import com.github.javafaker.Faker;
 
 import java.util.function.Consumer;
 
-import static org.example.reactive.Concept04MonoFromSupplierRefactoring.sleepMillis;
+import static org.example.reactive.mono.Concept04MonoFromSupplierRefactoring.sleepMillis;
 
 public class ReactiveUtils {
     public static Consumer<Object> onNext(){

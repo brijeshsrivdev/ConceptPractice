@@ -1,4 +1,4 @@
-package org.example.reactive;
+package org.example.reactive.mono;
 
 import java.util.stream.Stream;
 

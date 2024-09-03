@@ -1,16 +1,15 @@
-package org.example.reactive;
+package org.example.reactive.mono;
 
 import reactor.core.publisher.Mono;
 
-import java.util.concurrent.Callable;
-import java.util.function.Supplier;
-
 import static org.example.reactive.ReactiveUtils.faker;
-import static org.example.reactive.ReactiveUtils.onNext;
+
 import reactor.core.scheduler.Schedulers;
 
 public class Concept04MonoFromSupplierRefactoring {
     public static void main(String[] args) {
+
+
         getName();
         System.out.println(Thread.currentThread().getName());
         String name = getName()
