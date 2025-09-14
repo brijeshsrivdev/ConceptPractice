@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 import static org.example.reactive.mono.Concept04MonoFromSupplierRefactoring.sleepMillis;
 
 public class ReactiveUtils {
-    public static Consumer<Object> onNext(){
+    public Consumer<Object> onNext(){
         return o -> System.out.println("Received : " + o);
     }
 
